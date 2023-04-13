@@ -8,7 +8,7 @@ import java.util.Properties;
 
 public class PropertyReader {
 
-   public String readProperty(String fileUrl,String key){
+   public static String  readProperty(String fileUrl,String key){
        String value;
        try {
             java.net.URL configFileUrl = ClassLoader.getSystemResource(fileUrl);
