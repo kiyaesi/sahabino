@@ -10,14 +10,10 @@ import java.util.Properties;
 public class KafkaProducerService {
     private   String bootstrapServers ;
     private  KafkaProducer<String, String> kafkaProducer;
-    PropertyReader propertyReader = new PropertyReader();
+     private  PropertyReader propertyReader = new PropertyReader();
     {
         bootstrapServers=propertyReader.readProperty("config.properties","kafkaBootstrapServer");
     }
-//    public Future<> sendToKafka(KafkaProducer kafkaProducer, value){
-//        ProducerRecord<String, String> producerRecord = new ProducerRecord<>("logs", value);
-//       return kafkaProducer.send(producerRecord);
-//    }
 
 
     public  KafkaProducer<String, String>  getKafkaProducer(){
