@@ -31,9 +31,9 @@
         
   
   
-  <url>http://www.example.com</url>
-        
-  
+<!--  <url>http://www.example.com</url>-->
+<!--        -->
+<!--  -->
   
   <properties>
                 
@@ -47,18 +47,14 @@
   
   
   </properties>
-        
-  
-  
 
-          <dependency>
-              <groupId>org.mockito</groupId>
-              <artifactId>mockito-core</artifactId>
-              <scope>test</scope>
-          </dependency>
+<dependencies>
 
-    
-    
+
+
+
+
+
     <dependency>
                         
       
@@ -84,53 +80,52 @@
   <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
+            <version>3.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <version>3.4.0</version>
         </dependency>
       <dependency>
           <groupId>org.apache.kafka</groupId>
           <artifactId>kafka-clients</artifactId>
+          <version>3.4.0</version>
       </dependency>
+<!--    <dependency>-->
+<!--        <groupId>org.slf4j.impl</groupId>-->
+<!--        <artifactId>log4j12</artifactId>-->
+<!--        <version>1.7.2</version>-->
+<!--    </dependency>-->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.7</version>
+    </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <version>3.0.5</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-      </dependency>
-        <dependency>
 
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
   
   </dependencies>
         
