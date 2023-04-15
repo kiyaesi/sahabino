@@ -1,9 +1,6 @@
 package com.sahab.configs;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.Properties;
 
 public class PropertyReader {
