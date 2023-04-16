@@ -18,7 +18,7 @@ public class LogWarningsEntity {
     private String warningName;
     @NotNull
     private String description;
-    @NotNull
+
     private String warningType;
     @NotNull
     private LocalDateTime logCreatedAt;
@@ -27,7 +27,7 @@ public class LogWarningsEntity {
     @NotNull
     private LocalDateTime fileCreatedAt;
 
-    public LogWarningsEntity(String warningName,String description,String warningType,LocalDateTime logCreatedAt,String system,LocalDateTime fileCreatedAt) {
+    public LogWarningsEntity(String warningName,String warningType,String description,LocalDateTime logCreatedAt,String system,LocalDateTime fileCreatedAt) {
     this.warningName = warningName;
     this.warningType = warningType;
     this.description = description;

@@ -56,28 +56,34 @@ public class App implements CommandLineRunner {
                             LocalDateTime.parse( logParserService.logFileDate(record.key()))
                             );
                     logWarningsRepositroy.save(receivedLog);
-                    List logWarningsEntities = logWarningsRepositroy.findLogWarningsBySystemSortByTime(receivedLog.getWarningType(),pageForSystemLogs);
+                    if(rulesEvaluatorService.shouldCheckServerWarningsExceed(receivedLog)){
+                    List<LogWarningsEntity> logWarningsEntities = logWarningsRepositroy.findLogWarningsByWarningTypeSortByTime(receivedLog.getWarningType(),receivedLog.getSystem(),pageForLogsType);
                     if(rulesEvaluatorService.checkServerWarningsExceed(logWarningsEntities)){
                         LogWarningsEntity receivedLogSecondRoleChecked  = new LogWarningsEntity(
-                                logParserService.warningType(record.value()),
-                                logParserService.warningType(record.value()),
-                                logParserService.logMassage(record.value()),
+                                "SYSTEM_SPECEFIC_WARNING",
+                                null,
+                                receivedLog.getWarningType()+"|"+logWarningsEntities.get(0).getDescription()+"|"+logWarningsEntities.get(1).getDescription()+"|"
+                                +rulesEvaluatorService.warningLogRate(logWarningsEntities),
                                 LocalDateTime.parse( logParserService.logDateTime(record.value())),
                                 logParserService.systemName(record.key()),
                                 LocalDateTime.parse( logParserService.logFileDate(record.key()))
-                        )
-                    }
-                    logWarningsEntities = logWarningsRepositroy.findLogWarningsBySystemSortByTime()
+                        );
+                        logWarningsRepositroy.save(receivedLogSecondRoleChecked);
+
+                    }}
+                    if(rulesEvaluatorService.shouldCheckSystemExceed(receivedLog)){
+                        List logWarningsEntities = logWarningsRepositroy.findLogWarningsBySystemSortByTime(receivedLog.getSystem(), pageForSystemLogs);
                     if(rulesEvaluatorService.checkSystemWarningsExceed(logWarningsEntities)){
                         LogWarningsEntity receivedLogThirdRoleChecked  = new LogWarningsEntity(
-                                logParserService.warningType(record.value()),
-                                logParserService.warningType(record.value()),
-                                logParserService.logMassage(record.value()),
+                                "SYSTEM_WARNING",
+                                null,
+                                rulesEvaluatorService.systemLogRate(logWarningsEntities),
                                 LocalDateTime.parse( logParserService.logDateTime(record.value())),
                                 logParserService.systemName(record.key()),
                                 LocalDateTime.parse( logParserService.logFileDate(record.key()))
-                        )
-                    }
+                        );
+                        logWarningsRepositroy.save(receivedLogThirdRoleChecked);
+                    }}
 
                 }
             }
