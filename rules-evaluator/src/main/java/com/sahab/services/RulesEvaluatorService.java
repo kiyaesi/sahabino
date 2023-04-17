@@ -13,11 +13,11 @@ public class RulesEvaluatorService {
     private  static HashMap<String, LocalDateTime> systemsError;
     private  static HashMap<String, LocalDateTime> warningError;
     private  static final List<String> WARNING_TYPES = Arrays.asList(PropertyReader.readProperty("Rules.properties","warningTypes").toLowerCase().split("\\s*,\\s*"));
-     private final static int SYSTEM_EXCEED_TIME = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
+     private final static int SYSTEM_EXCEED_TIME = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerSystemExceed.time"));
      private final static int SERVER_WARNINGS_EXCEED_TIME = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
 
-    private final static int SERVER_WARNING_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
-    private final static int SYSTEM_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
+    private final static int SERVER_WARNING_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.number"));
+    private final static int SYSTEM_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerSystemExceed.number"));
         //Implement first rule
     public boolean checkLogTypeRule(String logType){
          if(WARNING_TYPES.contains(logType.toLowerCase())){

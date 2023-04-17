@@ -28,7 +28,7 @@ import java.util.List;
 public class App implements CommandLineRunner {
     private static KafkaConsumerService kafkaConsumerService = new KafkaConsumerService();
     private final static int SERVER_WARNING_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
-    private static int SYSTEM_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerWarningsExceed.time"));
+    private static int SYSTEM_EXCEED_NUMBER = Integer.parseInt(PropertyReader.readProperty("Rules.properties","checkServerSystemExceed.time"));
     Pageable pageForSystemLogs = PageRequest.of(0, SYSTEM_EXCEED_NUMBER);
     Pageable pageForLogsType = PageRequest.of(0, SERVER_WARNING_EXCEED_NUMBER);
     private static LogParserService logParserService = new LogParserService();

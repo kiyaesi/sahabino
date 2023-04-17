@@ -4,10 +4,12 @@ import com.sahab.Entity.LogWarningsEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public interface LogWarningsRepositroy extends JpaRepository<LogWarningsEntity, Long> {
 
     @Query(value = "SELECT u BY LogWarningsEntity u WHERE u.warningType = ?1 AND u.system = ?2 ORDER BY logCreatedAt DESC")
