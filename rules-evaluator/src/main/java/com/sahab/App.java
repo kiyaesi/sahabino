@@ -9,7 +9,6 @@ import com.sahab.services.RulesEvaluatorService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,11 +18,6 @@ import org.springframework.data.domain.Pageable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
 public class App implements CommandLineRunner {
     private static KafkaConsumerService kafkaConsumerService = new KafkaConsumerService();
@@ -35,8 +29,12 @@ public class App implements CommandLineRunner {
     private static KafkaConsumer kafkaConsumer = kafkaConsumerService.getConsumer();
     private static RulesEvaluatorService rulesEvaluatorService = new RulesEvaluatorService();
 
-    @Autowired
-    LogWarningsRepositroy logWarningsRepositroy ;
+    private final LogWarningsRepositroy logWarningsRepositroy ;
+
+    public App(LogWarningsRepositroy logWarningsRepositroy) {
+        this.logWarningsRepositroy = logWarningsRepositroy;
+    }
+
     public static void main(String args[]){
         SpringApplication.run(App.class, args);
     }

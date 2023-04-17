@@ -2,13 +2,14 @@ package com.sahab.Entity;
 
 
 import jakarta.validation.constraints.NotNull;
+//import lombok.Builder;
 import lombok.Data;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
-@Entity(name = "logWarningsEntity")
+//@Builder
+@Entity
 @Table(name = "LOGWARNING")
 public class LogWarningsEntity {
     @Id
