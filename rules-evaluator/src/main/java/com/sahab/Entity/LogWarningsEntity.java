@@ -2,38 +2,38 @@ package com.sahab.Entity;
 
 
 import jakarta.validation.constraints.NotNull;
-//import lombok.Builder;
+import lombok.Builder;
 import lombok.Data;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
-//@Builder
+@Builder
 @Entity
-@Table(name = "LOGWARNING")
+@Table(name = "LOGWARNING", schema = "sahabino")
 public class LogWarningsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
+
+    @Column
     @NotNull
     private String warningName;
+
+    @Column
     @NotNull
     private String description;
 
+    @Column
     private String warningType;
+
+    @Column
     @NotNull
     private LocalDateTime logCreatedAt;
+
+    @Column
     @NotNull
     private String system;
-    @NotNull
-    private LocalDateTime fileCreatedAt;
 
-    public LogWarningsEntity(String warningName,String warningType,String description,LocalDateTime logCreatedAt,String system,LocalDateTime fileCreatedAt) {
-    this.warningName = warningName;
-    this.warningType = warningType;
-    this.description = description;
-    this.logCreatedAt= logCreatedAt;
-    this.system = system;
-    this.fileCreatedAt= fileCreatedAt;
-    }
 }
