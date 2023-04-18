@@ -1,13 +1,16 @@
 package com.sahab;
 
-/**
- * Hello world!
- *
- */
+import org.springframework.boot.SpringApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    @GetMapping("/")
+    String home() {
+        return "Spring is here!";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
 }
